@@ -1,3 +1,6 @@
+// ERROR MESSAGES
+const errorMessages = document.querySelector('.error-messages');
+
 // WORD CONTAINERS
 const wordContainers = document.querySelectorAll('.main-word-inner');
 
@@ -40,5 +43,36 @@ function handlingTheRemoveFunctionality() {
     };
 };
 
+// CHECKING THE GUESS
+
+function checkingTheGuess() {
+    const errors = [];
+
+    // CHECKING IF THE ARRAY'S LENGTH IS 5
+    if (wordle.try.tryArr.length < 5) {
+        errors.push('Array is not completely filled.');
+        wordContainers[wordle.try.tryParentIndex].classList.add('main-word-inner-error');
+        setTimeout(() => wordContainers[wordle.try.tryParentIndex].classList.remove('main-word-inner-error'), 300);
+        errorMessage('Not enough letters');
+    };
+
+
+    if (errors.length === 0) {
+
+    };
+};
+
+// ERROR MESSAGE
+
+function errorMessage(errorMessageText) {
+    const errorMessage = document.createElement('div');
+    errorMessage.classList.add('error-message');
+    errorMessage.textContent = errorMessageText;
+
+    errorMessages.appendChild(errorMessage);
+    setTimeout(() => errorMessages.removeChild(errorMessage), 1000);
+};
+
 // INITIALIZE BUTTONS
+enterKey.addEventListener('click', checkingTheGuess);
 removeKey.addEventListener('click', handlingTheRemoveFunctionality);

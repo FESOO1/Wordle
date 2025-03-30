@@ -70,7 +70,7 @@ function errorMessage(errorMessageText) {
     errorMessage.textContent = errorMessageText;
 
     errorMessages.appendChild(errorMessage);
-    setTimeout(() => errorMessages.removeChild(errorMessage), 1000);
+    setTimeout(() => errorMessages.removeChild(errorMessage), 1500);
 };
 
 // INITIALIZE BUTTONS

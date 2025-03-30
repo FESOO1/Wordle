@@ -63,9 +63,12 @@ function checkingTheGuess() {
         const enteredGuess = wordle.try.tryArr.join(',').replaceAll(',', '');
 
         if (enteredGuess === wordle.randomWord) {
+            // ADDING THE WIN CLASS
             for (const word of wordContainers[wordle.try.tryParentIndex].children) {
                 word.classList.add('main-word-inner-itself-correct-spot');
             };
+
+            // DISABLING THE KEYBOARD
         };
     };
 };

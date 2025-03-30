@@ -13,14 +13,10 @@ const removeKey = document.querySelector('.main-keyboard-button-remove');
 // WORDLE
 const wordle = {
     try: {
-        tryIndex: 0,
+        tryCount: 0,
         tryParentIndex: 0,
         tryChildIndex: 0,
         tryArr: [],
-    },
-    word: {
-        wordCorrectSpotIndex: [],
-        wordCorrectSpotLetter: [],
     },
     randomWord: 'hello',
 };
@@ -89,8 +85,27 @@ function checkingTheGuess() {
             // IF NOT:
             for (let i = 0; i < wordle.try.tryArr.length; i++) {
                 if (wordle.randomWord.includes(wordle.try.tryArr[i])) {
-                    wordle.word.wordCorrectSpotIndex.push(wordContainers[wordle.try.tryParentIndex].children[i].getAttribute('data-word-index'));
-                    wordle.word.wordCorrectSpotLetter.push(wordle.try.tryArr[i]);
+                    if (wordle.try.tryArr[i] === wordle.randomWord[i]) {
+                        wordContainers[wordle.try.tryParentIndex].children[i].classList.add('main-word-inner-itself-correct-spot');
+                    } else {
+                        wordContainers[wordle.try.tryParentIndex].children[i].classList.add('main-word-inner-itself-incorrect-spot');
+                    };
+                } else {
+                    wordContainers[wordle.try.tryParentIndex].children[i].classList.add('main-word-inner-itself-not-found');
+                };
+            };
+
+            // GOING TO THE NEXT TRY
+            wordle.try.tryArr = [];
+            wordle.try.tryParentIndex++;
+            wordle.try.tryChildIndex = 0;
+            wordle.try.tryCount++;
+
+            // IF TRIED 6 TIMES
+            if (wordle.try.tryCount === 6) {
+                // DISABLING THE KEYBOARD
+                for (const keyButton of keyButtons) {
+                    keyButton.disabled = true;
                 };
             };
         };

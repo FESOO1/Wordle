@@ -163,3 +163,33 @@ function errorMessage(errorMessageText) {
 // INITIALIZE BUTTONS
 enterKey.addEventListener('click', checkingTheGuess);
 removeKey.addEventListener('click', handlingTheRemoveFunctionality);
+
+//
+
+window.addEventListener('keydown', e => {
+    for (const keyButton of keyButtons) {
+        keyButton.blur();
+    };
+
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+    // LETTER KEYS
+    if (alphabet.includes(e.key)) {
+        if (wordle.try.tryArr.length < 5) {
+            wordContainers[wordle.try.tryParentIndex].children[wordle.try.tryChildIndex].textContent = e.key;
+            wordContainers[wordle.try.tryParentIndex].children[wordle.try.tryChildIndex].classList.add('main-word-inner-itself-occupied');
+            wordle.try.tryArr.push(e.key);
+            wordle.try.tryChildIndex++;
+        };
+    };
+
+    // REMOVE
+    if (e.key === 'Backspace') {
+        handlingTheRemoveFunctionality();
+    };
+
+    // ENTER
+    if (e.key === 'Enter') {
+        checkingTheGuess();
+    };
+});

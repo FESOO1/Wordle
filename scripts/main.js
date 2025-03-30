@@ -89,6 +89,7 @@ function checkingTheGuess() {
             // IF NOT:
             for (let i = 0; i < wordle.try.tryArr.length; i++) {
                 if (wordle.randomWord.includes(wordle.try.tryArr[i])) {
+                    wordle.word.wordCorrectSpotIndex.push(wordContainers[wordle.try.tryParentIndex].children[i].getAttribute('data-word-index'));
                     wordle.word.wordCorrectSpotLetter.push(wordle.try.tryArr[i]);
                 };
             };

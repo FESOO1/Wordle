@@ -17,6 +17,7 @@ const wordle = {
         tryChildIndex: 0,
         tryArr: [],
     },
+    randomWord: 'hello',
 };
 
 // HANDLING THE KEYS' FUNCTIONALITIES
@@ -58,7 +59,14 @@ function checkingTheGuess() {
 
 
     if (errors.length === 0) {
+        // CHECKING IF THE GUESS WAS CORRECT
+        const enteredGuess = wordle.try.tryArr.join(',').replaceAll(',', '');
 
+        if (enteredGuess === wordle.randomWord) {
+            for (const word of wordContainers[wordle.try.tryParentIndex].children) {
+                word.classList.add('');
+            };
+        };
     };
 };
 

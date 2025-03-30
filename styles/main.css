@@ -3,6 +3,7 @@
 :root {
     --f-inter: "Inter", serif;
     --border: 1px solid rgba(255,255,255,0.2);
+    --border-occupied: 1px solid rgba(255,255,255,0.4);
     --keyboard-letter-bg: rgb(25,25,25);
     --keyboard-letter-bg-hover: rgb(35,35,35);
     --keyboard-letter-bg-active: rgb(30,30,30);
@@ -64,6 +65,11 @@ main {
     color: white;
     font-weight: 900;
     font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.main-word-inner-itself-occupied {
+    border: var(--border-occupied);
 }
 
 /* 

@@ -95,12 +95,14 @@ function checkingTheGuess() {
     };
 
     // CHECKING IF THE INPUT IS A REAL WORD OR NOT
-    const enteredGuess = wordle.try.tryArr.join(',').replaceAll(',', '');
-    if (!wordle.words.includes(enteredGuess)) {
-        errors.push('It is not listed word');
-        wordContainers[wordle.try.tryParentIndex].classList.add('main-word-inner-error');
-        setTimeout(() => wordContainers[wordle.try.tryParentIndex].classList.remove('main-word-inner-error'), 300);
-        errorMessage('It is not in the list.');
+    if (wordle.try.tryArr.length === 5) {
+        const enteredGuess = wordle.try.tryArr.join(',').replaceAll(',', '');
+        if (!wordle.words.includes(enteredGuess)) {
+            errors.push('It is not listed word');
+            wordContainers[wordle.try.tryParentIndex].classList.add('main-word-inner-error');
+            setTimeout(() => wordContainers[wordle.try.tryParentIndex].classList.remove('main-word-inner-error'), 300);
+            errorMessage('It is not in the list.');
+        };
     };
 
 
@@ -157,7 +159,7 @@ function errorMessage(errorMessageText) {
     errorMessage.textContent = errorMessageText;
 
     errorMessages.appendChild(errorMessage);
-    setTimeout(() => errorMessages.removeChild(errorMessage), 1500);
+    setTimeout(() => errorMessages.removeChild(errorMessage), 1200);
 };
 
 // INITIALIZE BUTTONS

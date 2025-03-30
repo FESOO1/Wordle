@@ -171,25 +171,28 @@ window.addEventListener('keydown', e => {
         keyButton.blur();
     };
 
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    // IF TRIED 6 TIMES
+    if (wordle.try.tryCount < 6) {
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-    // LETTER KEYS
-    if (alphabet.includes(e.key)) {
-        if (wordle.try.tryArr.length < 5) {
-            wordContainers[wordle.try.tryParentIndex].children[wordle.try.tryChildIndex].textContent = e.key;
-            wordContainers[wordle.try.tryParentIndex].children[wordle.try.tryChildIndex].classList.add('main-word-inner-itself-occupied');
-            wordle.try.tryArr.push(e.key);
-            wordle.try.tryChildIndex++;
+        // LETTER KEYS
+        if (alphabet.includes(e.key)) {
+            if (wordle.try.tryArr.length < 5) {
+                wordContainers[wordle.try.tryParentIndex].children[wordle.try.tryChildIndex].textContent = e.key;
+                wordContainers[wordle.try.tryParentIndex].children[wordle.try.tryChildIndex].classList.add('main-word-inner-itself-occupied');
+                wordle.try.tryArr.push(e.key);
+                wordle.try.tryChildIndex++;
+            };
         };
-    };
 
-    // REMOVE
-    if (e.key === 'Backspace') {
-        handlingTheRemoveFunctionality();
-    };
+        // REMOVE
+        if (e.key === 'Backspace') {
+            handlingTheRemoveFunctionality();
+        };
 
-    // ENTER
-    if (e.key === 'Enter') {
-        checkingTheGuess();
+        // ENTER
+        if (e.key === 'Enter') {
+            checkingTheGuess();
+        };  
     };
 });

@@ -2,18 +2,18 @@
 
 :root {
     --f-inter: "Inter", serif;
-    --border: 1px solid rgba(255,255,255,0.2);
-    --border-occupied: 1px solid rgba(255,255,255,0.4);
+    --border: 1px solid rgba(255, 255, 255, 0.2);
+    --border-occupied: 1px solid rgba(255, 255, 255, 0.4);
     --border-correct-spot: 1px solid #79b851;
     --border-incorrect-spot: 1px solid #f3c237;
     --border-not-found: 1px solid #171717;
-    --keyboard-letter-bg: rgb(25,25,25);
-    --keyboard-letter-bg-hover: rgb(35,35,35);
-    --keyboard-letter-bg-active: rgb(30,30,30);
-    --keyboard-enter-bg: rgb(35,35,35);
-    --keyboard-enter-bg-hover: rgb(45,45,45);
-    --keyboard-enter-bg-active: rgb(40,40,40);
-    --keyboard-remove-bg: rgb(35,35,35);
+    --keyboard-letter-bg: rgb(25, 25, 25);
+    --keyboard-letter-bg-hover: rgb(35, 35, 35);
+    --keyboard-letter-bg-active: rgb(30, 30, 30);
+    --keyboard-enter-bg: rgb(35, 35, 35);
+    --keyboard-enter-bg-hover: rgb(45, 45, 45);
+    --keyboard-enter-bg-active: rgb(40, 40, 40);
+    --keyboard-remove-bg: rgb(35, 35, 35);
     --keyboard-remove-bg-hover: red;
     --keyboard-remove-bg-active: rgb(210, 0, 0);
     --correct-spot-bg: #79b851;
@@ -29,7 +29,7 @@
 }
 
 body {
-    background-color: rgb(17,17,17);
+    background-color: rgb(17, 17, 17);
 }
 
 main {
@@ -61,7 +61,7 @@ main {
 
 .error-message {
     color: white;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     padding: 10px;
     border-radius: 0.2rem;
     backdrop-filter: blur(5px);
@@ -92,11 +92,25 @@ main {
 }
 
 @keyframes word-container-error-animation {
-    0%{transform: translateX(0);}
-    25%{transform: translateX(5px);}
-    50%{transform: translateX(0);}
-    75%{transform: translateX(-5px);}
-    100%{transform: translateX(0);}
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(5px);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* MAIN WORD INNER ITSELF */
@@ -190,8 +204,8 @@ main {
     border: 0;
     background-color: var(--keyboard-letter-bg);
     color: white;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     cursor: pointer;
 }
 
@@ -213,8 +227,8 @@ main {
     border: 0;
     background-color: var(--keyboard-enter-bg);
     color: white;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     cursor: pointer;
 }
 
@@ -236,8 +250,8 @@ main {
     border: 0;
     background-color: var(--keyboard-enter-bg);
     color: white;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -256,4 +270,67 @@ main {
 
 .main-keyboard-button-remove:active {
     background-color: var(--keyboard-remove-bg-active);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 700px) {
+    main {
+        justify-content: space-between;
+        padding-block: 20px;
+    }
+    .main-keyboard {
+        width: calc(100% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .main-keyboard {
+        row-gap: 5px;
+    }
+    .main-keyboard-inner-top,
+    .main-keyboard-inner-middle,
+    .main-keyboard-inner-bottom {
+        column-gap: 5px;
+    }
+    .main-keyboard {
+        width: calc(100% - 10px);
+    }
+    main {
+        justify-content: space-between;
+        padding-block: 20px 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    main {
+        --width: 270px;
+    }
+    .main-words-container {
+        height: 350px;
+    }
+    .main-keyboard {
+        row-gap: 2px;
+    }
+    .main-keyboard-inner-top,
+    .main-keyboard-inner-middle,
+    .main-keyboard-inner-bottom {
+        column-gap: 2px;
+    }
+    .main-keyboard {
+        width: calc(100% - 5px);
+    }
+    .main-keyboard-button-enter,
+    .main-keyboard-button-remove {
+        padding: 15px 10px;
+    }
+}
+
+@media (max-width: 350px) {
+    main {
+        --width: 260px;
+    }
+    .main-words-container {
+        height: 300px;
+    }
 }

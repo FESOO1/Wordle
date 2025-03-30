@@ -28,3 +28,17 @@ for (let i = 0; i < letterKeys.length; i++) {
         };
     });
 };
+
+// HANDLING THE REMOVE FUNCTIONALITY
+
+function handlingTheRemoveFunctionality() {
+    if (wordle.try.tryArr.length > 0) {
+        wordle.try.tryChildIndex--;
+        wordContainers[wordle.try.tryParentIndex].children[wordle.try.tryChildIndex].textContent = '';
+        wordContainers[wordle.try.tryParentIndex].children[wordle.try.tryChildIndex].classList.remove('main-word-inner-itself-occupied');
+        wordle.try.tryArr.pop();
+    };
+};
+
+// INITIALIZE BUTTONS
+removeKey.addEventListener('click', handlingTheRemoveFunctionality);

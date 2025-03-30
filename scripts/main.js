@@ -18,7 +18,19 @@ const wordle = {
         tryChildIndex: 0,
         tryArr: [],
     },
+    word: {
+        wordCorrectSpotIndex: [],
+        wordCorrectSpotLetter: [],
+    },
     randomWord: 'hello',
+};
+
+// SETTING ATTRIBUTES TO THE WORD ELEMENT
+
+for (let i = 0; i < wordContainers.length; i++) {
+    for (let iterator = 0; iterator < wordContainers[i].children.length; iterator++) {
+        wordContainers[i].children[iterator].setAttribute('data-word-index', iterator);
+    };
 };
 
 // HANDLING THE KEYS' FUNCTIONALITIES
@@ -72,6 +84,13 @@ function checkingTheGuess() {
             // DISABLING THE KEYBOARD
             for (const keyButton of keyButtons) {
                 keyButton.disabled = true;
+            };
+        } else {
+            // IF NOT:
+            for (let i = 0; i < wordle.try.tryArr.length; i++) {
+                if (wordle.randomWord.includes(wordle.try.tryArr[i])) {
+                    wordle.word.wordCorrectSpotLetter.push(wordle.try.tryArr[i]);
+                };
             };
         };
     };

@@ -149,6 +149,10 @@ main {
     pointer-events: none;
 }
 
+.main-keyboard button:disabled svg {
+    fill: gray;
+}
+
 /* MAIN KEYBOARD INNER TOP */
 
 .main-keyboard-inner-top {

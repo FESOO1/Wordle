@@ -18,8 +18,36 @@ const wordle = {
         tryChildIndex: 0,
         tryArr: [],
     },
-    randomWord: 'hello',
+    randomWord: undefined,
+    words: [],
 };
+
+async function gettingRandomWord() {
+    try {
+        const request = new Request('../words/words.json');
+
+        const response = await fetch(request);
+
+        const data = await response.json();
+
+        // GETTING RANDOM WORD
+        wordle.randomWord = data.words[Math.floor(Math.random() * data.words.length)];
+
+        // PUSHING ALL THE WORDS INTO MY WORDS PROPERTY
+        for (let i = 0; i < data.words.length; i++) {
+            wordle.words.push(data.words[i]);
+        };
+
+        // ENABLING THE KEYBOARD
+        for (const keyButton of keyButtons) {
+            keyButton.disabled = false;
+        };
+    } catch (error) {
+        console.log(error);
+    };
+};
+
+gettingRandomWord()
 
 // SETTING ATTRIBUTES TO THE WORD ELEMENT
 
@@ -64,6 +92,15 @@ function checkingTheGuess() {
         wordContainers[wordle.try.tryParentIndex].classList.add('main-word-inner-error');
         setTimeout(() => wordContainers[wordle.try.tryParentIndex].classList.remove('main-word-inner-error'), 300);
         errorMessage('Not enough letters');
+    };
+
+    // CHECKING IF THE INPUT IS A REAL WORD OR NOT
+    const enteredGuess = wordle.try.tryArr.join(',').replaceAll(',', '');
+    if (!wordle.words.includes(enteredGuess)) {
+        errors.push('It is not listed word');
+        wordContainers[wordle.try.tryParentIndex].classList.add('main-word-inner-error');
+        setTimeout(() => wordContainers[wordle.try.tryParentIndex].classList.remove('main-word-inner-error'), 300);
+        errorMessage('It is not in the list.');
     };
 
 

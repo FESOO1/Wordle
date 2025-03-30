@@ -4,6 +4,9 @@
     --f-inter: "Inter", serif;
     --border: 1px solid rgba(255,255,255,0.2);
     --border-occupied: 1px solid rgba(255,255,255,0.4);
+    --border-correct-spot: 1px solid #79b851;
+    --border-incorrect-spot: 1px solid #f3c237;
+    --border-not-found: 1px solid #171717;
     --keyboard-letter-bg: rgb(25,25,25);
     --keyboard-letter-bg-hover: rgb(35,35,35);
     --keyboard-letter-bg-active: rgb(30,30,30);
@@ -13,6 +16,9 @@
     --keyboard-remove-bg: rgb(35,35,35);
     --keyboard-remove-bg-hover: red;
     --keyboard-remove-bg-active: rgb(210, 0, 0);
+    --correct-spot-bg: #79b851;
+    --incorrect-spot-bg: #f3c237;
+    --not-found-bg: #303030;
 }
 
 * {
@@ -102,16 +108,27 @@ main {
     align-items: center;
     color: white;
     font-weight: 800;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
-}
-
-.main-word-inner-itself-correct-spot {
-
 }
 
 .main-word-inner-itself-occupied {
     border: var(--border-occupied);
+}
+
+.main-word-inner-itself-correct-spot {
+    background-color: var(--correct-spot-bg);
+    border: var(--border-correct-spot);
+}
+
+.main-word-inner-itself-incorrect-spot {
+    background-color: var(--incorrect-spot-bg);
+    border: var(--border-incorrect-spot);
+}
+
+.main-word-inner-itself-not-found {
+    background-color: var(--not-found-bg);
+    border: var(--border-not-found);
 }
 
 /* 

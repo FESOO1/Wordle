@@ -64,7 +64,7 @@ function checkingTheGuess() {
 
         if (enteredGuess === wordle.randomWord) {
             for (const word of wordContainers[wordle.try.tryParentIndex].children) {
-                word.classList.add('');
+                word.classList.add('main-word-inner-itself-correct-spot');
             };
         };
     };

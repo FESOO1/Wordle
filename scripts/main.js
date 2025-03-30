@@ -5,6 +5,7 @@ const errorMessages = document.querySelector('.error-messages');
 const wordContainers = document.querySelectorAll('.main-word-inner');
 
 // KEYS
+const keyButtons = document.querySelectorAll('.main-keyboard button');
 const letterKeys = document.querySelectorAll('.main-keyboard-button-letter');
 const enterKey = document.querySelector('.main-keyboard-button-enter');
 const removeKey = document.querySelector('.main-keyboard-button-remove');
@@ -69,6 +70,9 @@ function checkingTheGuess() {
             };
 
             // DISABLING THE KEYBOARD
+            for (const keyButton of keyButtons) {
+                keyButton.disabled = true;
+            };
         };
     };
 };
